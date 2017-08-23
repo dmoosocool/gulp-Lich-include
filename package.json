@@ -1,0 +1,23 @@
+{
+  "name": "gulp-lich-include",
+  "version": "1.0.0",
+  "description": "Lich.js dynamic include static resource gulpjs plugin.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dmoosocool/gulp-Lich-include.git"
+  },
+  "keywords": [
+    "gulpjs",
+    "include"
+  ],
+  "author": "DmooSoCool",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/dmoosocool/gulp-Lich-include/issues"
+  },
+  "homepage": "https://github.com/dmoosocool/gulp-Lich-include#readme"
+}
