@@ -1,6 +1,6 @@
 {
   "name": "gulp-lich-include",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Lich.js dynamic include static resource gulpjs plugin.",
   "main": "index.js",
   "scripts": {
