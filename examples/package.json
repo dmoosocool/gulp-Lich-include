@@ -1,0 +1,15 @@
+{
+  "name": "gulp-lich-include",
+  "description": "An example that shows how to include js/css files in place",
+  "version": "0.0.0",
+  "main": "gulpfile.js",
+  "devDependencies": {
+    "gulp": "gulpjs/gulp#4.0",
+    "animate.css": "^3.5.2",
+    "jquery": "^3.2.1",
+    "lodash": "^4.17.4"
+  },
+  "dependencies": {
+    "through2": "^2.0.3"
+  }
+}

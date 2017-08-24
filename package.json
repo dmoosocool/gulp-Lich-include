@@ -12,6 +12,7 @@
   },
   "keywords": [
     "gulpjs",
+    "Lich.js",
     "include"
   ],
   "author": "DmooSoCool",
@@ -20,15 +21,8 @@
     "url": "https://github.com/dmoosocool/gulp-Lich-include/issues"
   },
   "homepage": "https://github.com/dmoosocool/gulp-Lich-include#readme",
-  "devDependencies": {
-    "concat-stream": "^1.5.2",
-    "mocha": "^3.5.0",
-    "should": "^11.2.1",
-    "vinyl": "^2.1.0"
-  },
+  "devDependencies": {},
   "dependencies": {
-    "istextorbinary": "2.1.0",
-    "readable-stream": "^2.0.1",
-    "replacestream": "^4.0.0"
+    "through2": "^2.0.3"
   }
 }
