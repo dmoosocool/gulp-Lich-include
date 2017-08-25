@@ -2,7 +2,10 @@
 require('should');
 var analysis = require('../utils/analysis'),
     fs = require('fs'),
-    File = require('vinyl'),
+    vinylFile = require('vinyl'),
+    mocha = require('mocha'),
+    describe = mocha.describe,
+    it = mocha.it,
     path = require('path');
 
 const TEST_DIR = path.join(process.cwd(), 'test');
@@ -12,7 +15,7 @@ describe('Analysis test include js-local.', function () {
     it('Test include single js-local', function () {
         let tmpPath = path.join(TEST_DIR, 'test-js-local/test-local1.html'),
             LichAnalysis = new analysis(config, {}),
-            file = new File({
+            file = new vinylFile({
                 path: tmpPath,
                 contents: fs.readFileSync(tmpPath)
             }),
@@ -24,7 +27,7 @@ describe('Analysis test include js-local.', function () {
     it('Test include multiple js-local', function () {
         let tmpPath = path.join(TEST_DIR, 'test-js-local/test-local2.html'),
             LichAnalysis = new analysis(config, {}),
-            file = new File({
+            file = new vinylFile({
                 path: tmpPath,
                 contents: fs.readFileSync(tmpPath)
             }),
@@ -40,7 +43,7 @@ describe('Analysis test include js-npm.', function () {
     it('Test include single js-npm', function () {
         let tmpPath = path.join(TEST_DIR, 'test-js-npm/test-npm1.html'),
             LichAnalysis = new analysis(config, {}),
-            file = new File({
+            file = new vinylFile({
                 path: tmpPath,
                 contents: fs.readFileSync(tmpPath)
             }),
@@ -51,7 +54,7 @@ describe('Analysis test include js-npm.', function () {
     it('Test include multiple js-npm', function () {
         let tmpPath = path.join(TEST_DIR, 'test-js-npm/test-npm2.html'),
             LichAnalysis = new analysis(config, {}),
-            file = new File({
+            file = new vinylFile({
                 path: tmpPath,
                 contents: fs.readFileSync(tmpPath)
             }),
@@ -66,7 +69,7 @@ describe('Analysis test include css-local.', function () {
     it('Test include single css-local', function () {
         let tmpPath = path.join(TEST_DIR, 'test-css-local/test-local1.html'),
             LichAnalysis = new analysis(config, {}),
-            file = new File({
+            file = new vinylFile({
                 path: tmpPath,
                 contents: fs.readFileSync(tmpPath)
             }),
@@ -77,7 +80,7 @@ describe('Analysis test include css-local.', function () {
     it('Test include multiple css-local', function () {
         let tmpPath = path.join(TEST_DIR, 'test-css-local/test-local2.html'),
             LichAnalysis = new analysis(config, {}),
-            file = new File({
+            file = new vinylFile({
                 path: tmpPath,
                 contents: fs.readFileSync(tmpPath)
             }),
@@ -92,7 +95,7 @@ describe('Analysis test include tpl.', function () {
     it('Test include single tpl', function () {
         let tmpPath = path.join(TEST_DIR, 'test-tpl/test1.html'),
             LichAnalysis = new analysis(config, {}),
-            file = new File({
+            file = new vinylFile({
                 path: tmpPath,
                 contents: fs.readFileSync(tmpPath)
             }),
@@ -103,7 +106,7 @@ describe('Analysis test include tpl.', function () {
     it('Test include multiple tpl', function () {
         let tmpPath = path.join(TEST_DIR, 'test-tpl/test2.html'),
             LichAnalysis = new analysis(config, {}),
-            file = new File({
+            file = new vinylFile({
                 path: tmpPath,
                 contents: fs.readFileSync(tmpPath)
             }),
@@ -118,7 +121,7 @@ describe('Analysis test include rule.', function () {
     it('Test include single rule', function () {
         let tmpPath = path.join(TEST_DIR, 'test-rule/test1.html'),
             LichAnalysis = new analysis(config, {}),
-            file = new File({
+            file = new vinylFile({
                 path: tmpPath,
                 contents: fs.readFileSync(tmpPath)
             }),
@@ -132,7 +135,7 @@ describe('Analysis test include rule.', function () {
     it('Test include multiple rule', function () {
         let tmpPath = path.join(TEST_DIR, 'test-rule/test2.html'),
             LichAnalysis = new analysis(config, {}),
-            file = new File({
+            file = new vinylFile({
                 path: tmpPath,
                 contents: fs.readFileSync(tmpPath)
             }),
@@ -151,7 +154,7 @@ describe('Analysis test full.', function () {
     it('Test a full use case', function () {
         let tmpPath = path.join(TEST_DIR, 'src/test.html'),
             LichAnalysis = new analysis(config, {env: 'test', name: 'anjo'}),
-            file = new File({
+            file = new vinylFile({
                 path: tmpPath,
                 contents: fs.readFileSync(tmpPath)
             }),
