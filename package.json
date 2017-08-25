@@ -21,8 +21,12 @@
     "url": "https://github.com/dmoosocool/gulp-Lich-include/issues"
   },
   "homepage": "https://github.com/dmoosocool/gulp-Lich-include#readme",
-  "devDependencies": {},
+  "devDependencies": {
+    "should": "^11.2.1",
+    "vinyl": "^2.1.0"
+  },
   "dependencies": {
+    "lodash": "^4.17.4",
     "through2": "^2.0.3"
   }
 }

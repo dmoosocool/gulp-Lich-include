@@ -1,5 +1,6 @@
 'use strict';
 let path = require('path'),
+    _ = require('lodash'),
     fs = require('fs');
 
 let analysis = function analysis(config, inject) {
@@ -10,7 +11,7 @@ let analysis = function analysis(config, inject) {
 analysis.prototype.execute = function (file) {
     let content = file.contents.toString(),
         filepath = file.path,
-        command = this.config.command,
+        command = this.config.command || 'Lich',
         _this = this;
 
     /**
@@ -35,7 +36,8 @@ analysis.prototype.execute = function (file) {
             realPath = '';
 
         files.forEach(function (item) {
-            realPath = path.join(_this.config.dev_dir, item) + _this.config.tplExtension;
+            item = item.trim();
+            realPath = path.resolve(path.dirname(filepath), path.join(_this.config.dev_dir, item)) + _this.config.tplExtension;
             let tplContent = fs.readFileSync(realPath, {encoding: 'utf-8', flag: 'r'});
             result.push(tplContent)
         });
@@ -44,24 +46,26 @@ analysis.prototype.execute = function (file) {
     }
 
     function analysisRule(rule) {
-        let rules = _this.config.rules[rule],
+        let rules = rule.indexOf(',') > -1 ? rule.split(',') : [rule],
             result = [];
-
-        rules.forEach(function (item) {
-            switch (item.type) {
-                case 'js-local':
-                    result.push(analysisJs(item.list.join(','), 'local'));
-                    break;
-                case 'js-npm':
-                    result.push(analysisJs(item.list.join(','), 'npm'));
-                    break;
-                case 'css-local':
-                    result.push(analysisCss(item.list.join(','), 'local'));
-                    break;
-                case 'css-npm':
-                    result.push(analysisCss(item.list.join(','), 'npm'));
-                    break;
-            }
+        rules.forEach(function (rule) {
+            rule = _this.config.rules[rule];
+            rule.forEach(function (item) {
+                switch (item.type) {
+                    case 'js-local':
+                        result.push(analysisJs(item.list.join(','), 'local'));
+                        break;
+                    case 'js-npm':
+                        result.push(analysisJs(item.list.join(','), 'npm'));
+                        break;
+                    case 'css-local':
+                        result.push(analysisCss(item.list.join(','), 'local'));
+                        break;
+                    case 'css-npm':
+                        result.push(analysisCss(item.list.join(','), 'npm'));
+                        break;
+                }
+            });
         });
         return result.join('\n');
     }
@@ -77,9 +81,11 @@ analysis.prototype.execute = function (file) {
             realPath = '';
 
         files.forEach(function (item) {
+            item = item.trim();
             if ('local' === type) {
                 // 获取相对路径.
-                realPath = path.relative(path.dirname(filepath), item) + _this.config.jsExtension;
+                realPath = path.relative(path.dirname(filepath), path.join(_this.config.dev_dir, item)) + _this.config.jsExtension;
+
             }
 
             if ('npm' === type) {
@@ -98,9 +104,10 @@ analysis.prototype.execute = function (file) {
             realPath = '';
 
         files.forEach(function (item) {
+            item = item.trim();
             if ('local' === type) {
                 // 获取相对路径.
-                realPath = path.relative(path.dirname(filepath), item) + _this.config.cssExtension;
+                realPath = path.relative(path.dirname(filepath), path.join(_this.config.dev_dir, item)) + _this.config.cssExtension;
             }
 
             if ('npm' === type) {
@@ -148,8 +155,8 @@ analysis.prototype.execute = function (file) {
         return result;
     });
 
-    file.contents = Buffer.from(content);
-    return file;
+    //file.contents = Buffer.from(content);
+    return content;
 };
 
 module.exports = analysis;

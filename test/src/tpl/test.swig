@@ -1,0 +1,1 @@
+<h1>hello, this is template's content.</h1>

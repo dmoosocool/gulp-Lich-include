@@ -14,7 +14,9 @@ module.exports = function (config, injectObj) {
             return callback(null, file);
         }
         // 解析指令
-        file = LichAnalysis.execute(file);
+        let content = LichAnalysis.execute(file);
+
+        file.contents = Buffer.from(content, 'utf8');
         return callback(null, file);
     });
 };
