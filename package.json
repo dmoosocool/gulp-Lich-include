@@ -4,7 +4,9 @@
   "description": "Lich.js dynamic include static resource gulpjs plugin.",
   "main": "index.js",
   "scripts": {
-    "test": "./node_modules/mocha/bin/mocha"
+    "test": "./node_modules/mocha/bin/mocha",
+    "cover": "./node_modules/.bin/intanbul cover _mocha",
+    "coveralls": "npm run cover -- --report lcovonly && cat ./coverage/lcov.info | ./node_modules/.bin/coveralls"
   },
   "repository": {
     "type": "git",
@@ -22,7 +24,10 @@
   },
   "homepage": "https://github.com/dmoosocool/gulp-Lich-include#readme",
   "devDependencies": {
+    "coveralls": "^2.13.1",
+    "istanbul": "^0.4.5",
     "mocha": "^3.5.0",
+    "mocha-lcov-reporter": "^1.3.0",
     "should": "^11.2.1",
     "vinyl": "^2.1.0"
   },
