@@ -39,7 +39,7 @@ analysis.prototype.execute = function (file) {
             item = item.trim();
             realPath = path.resolve(path.dirname(filepath), path.join(_this.config.dev_dir, item)) + _this.config.tplExtension;
             let tplContent = fs.readFileSync(realPath, {encoding: 'utf-8', flag: 'r'});
-            result.push(tplContent)
+            result.push(tplContent);
         });
 
         return result.join('\n');
