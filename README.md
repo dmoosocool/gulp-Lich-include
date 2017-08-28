@@ -14,3 +14,78 @@
 ```
 Lich.js dynamic include static resource gulpjs plugin.
 ```
+# Instructions.
+## Define a config file. Like `Lich.rules.config.js`
+
+```javascript
+module.exports = {
+    // developer directory.
+    dev_dir: path.resolve(__dirname, 'src'),
+
+    // template extension.
+    tplExtension: '.swig',
+
+    // javascript extension.
+    jsExtension: '.js',
+
+    // css extension.
+    cssExtension: '.css',
+
+    // command name.
+    command: 'Lich',
+
+    // declare rules.
+    rules: {
+        commonScripts: [{
+            type: 'js-local',
+            list: [
+                'js/test.rule',
+                'js/test1.rule'
+            ]
+        }, {
+            type: 'js-npm',
+            list: [
+                'jquery/dist/jquery.min'
+            ]
+        }],
+        commonStyles: [{
+            type: 'css-local',
+            list: [
+                'css/test1',
+                'css/test2'
+            ]
+        }, {
+            type: 'css-npm',
+            list: [
+                'animate.css/animate'
+            ]
+        }]
+    }
+};
+```
+
+## Local javascript include.
+```HTML
+<!--Lich js-local="path/to/script" -->
+<!--Lich js-local="path/to/script,path/to/other" -->
+```
+
+## Npm javascript include.
+```HTML
+<!-- Lich js-npm="path/tp/script"
+<!-- Lic js-npm="path/to/script,path/to/other"
+```
+
+## Local style include.
+```HTML
+<!--Lich css-local="path/to/style" -->
+<!--Lich css-local="path/to/style,path/to/other" -->
+```
+
+## Template include.
+```HTML
+<!--Lich tpl="path/to/tpl"-->
+```
+
+## Rule include.
+<!--Lich rule="rule"-->
