@@ -108,6 +108,12 @@ module.exports = {
 <!--Lich css-local="path/to/style,path/to/other" -->
 ```
 
+## Npm style include.
+```HTML
+<!-- Lich css-npm="path/to/style" -->
+<!-- Lich css-npm="path/to/style,path/to/other" -->
+```
+
 ## Template include.
 ```HTML
 <!--Lich tpl="path/to/tpl"-->
