@@ -13,6 +13,32 @@ Lich.js dynamic include static resource gulpjs plugin.
 ```
 # Instructions.
 
+## install plugin.
+```javascript
+npm i gulp-lich-include -D
+```
+
+## In gulpfiles.
+```javascript
+let gulp = require('gulp'),
+    include = require('gulp-lich-include'),
+    // Config File.
+    config = require('./Lich.rules.config');
+
+let test = function () {
+    let injectObject = {
+        env: 'test',
+        name: 'dmoo'
+    };
+
+    return gulp.src('src/test.html', {base: './src'})
+        .pipe(include(config, injectObject))
+        .pipe(gulp.dest('./dist'));
+};
+
+gulp.task('default', test);
+```
+
 ## For more examples, see the [example](https://github.com/dmoosocool/gulp-Lich-include/tree/master/examples) folder
 
 ## Define a config file. Like `Lich.rules.config.js`

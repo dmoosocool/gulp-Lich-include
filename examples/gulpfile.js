@@ -1,11 +1,17 @@
 let gulp = require('gulp'),
-    include = require('../index'),
-    config = require('./Lich.rules.config');
+include = require('gulp-lich-include'),
+// Config File.
+config = require('./Lich.rules.config');
 
-var test = function () {
-    return gulp.src('src/test.html', {base: './src'})
-        .pipe(include(config, {env: 'test', name: 'dmoo'}))
-        .pipe(gulp.dest('./dist'));
+let test = function () {
+let injectObject = {
+    env: 'test',
+    name: 'dmoo'
+};
+
+return gulp.src('src/test.html', {base: './src'})
+    .pipe(include(config, injectObject))
+    .pipe(gulp.dest('./dist'));
 };
 
 gulp.task('default', test);
