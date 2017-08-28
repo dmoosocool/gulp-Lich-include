@@ -12,6 +12,9 @@
 Lich.js dynamic include static resource gulpjs plugin.
 ```
 # Instructions.
+
+## For more examples, see the [example](https://github.com/dmoosocool/gulp-Lich-include/tree/master/examples) folder
+
 ## Define a config file. Like `Lich.rules.config.js`
 
 ```javascript
