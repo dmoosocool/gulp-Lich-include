@@ -88,4 +88,6 @@ module.exports = {
 ```
 
 ## Rule include.
+```HTML
 <!--Lich rule="rule"-->
+```
