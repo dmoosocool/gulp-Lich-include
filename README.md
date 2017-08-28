@@ -72,8 +72,8 @@ module.exports = {
 
 ## Npm javascript include.
 ```HTML
-<!-- Lich js-npm="path/tp/script"
-<!-- Lic js-npm="path/to/script,path/to/other"
+<!-- Lich js-npm="path/tp/script"-->
+<!-- Lich js-npm="path/to/script,path/to/other"-->
 ```
 
 ## Local style include.
