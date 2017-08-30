@@ -46,7 +46,7 @@ gulp.task('default', test);
 ```javascript
 module.exports = {
     // developer directory.
-    dev_dir: path.resolve(__dirname, 'src'),
+    devDir: path.resolve(__dirname, 'src'),
 
     // template extension.
     tplExtension: '.swig',

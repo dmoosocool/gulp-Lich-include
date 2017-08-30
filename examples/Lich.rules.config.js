@@ -1,6 +1,6 @@
 let path = require('path');
 /**
- * ${dev_dir}   开发目录 js-local, css-local的前置目录.
+ * ${devDir}   开发目录 js-local, css-local的前置目录.
  * ${command}   指令
  *
  * 指令格式: 根据配置的指令解析. <!--${command} ${type}="${params}"-->
@@ -28,12 +28,13 @@ let path = require('path');
  * ${rules}[key].list               规则引用的列表
  *
  * 其他说明:
- *      '*-local'       :       默认路径为: ${dev_dir}
+ *      '*-local'       :       默认路径为: ${devDir}
  *      '*-npm'         :       默认路径为: './node_modules/'
  */
 
 module.exports = {
-    dev_dir: path.resolve(__dirname, 'src'),
+    devDir: path.resolve(process.cwd(), 'src'),
+    distDir: path.resolve(process.cwd(), 'dist'),
     tplExtension: '.swig',
     jsExtension: '.js',
     cssExtension: '.css',
