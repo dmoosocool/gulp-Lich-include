@@ -25,12 +25,13 @@ module.exports = function executeMerge(params, type, ctx) {
         extension = 'js-local' === type ? _this.config.jsExtension : 'css-local' == type ? _this.config.cssExtension : '';
 
 
-    mergeOpt.files.forEach(function (item) {
+    mergeOpt.files.forEach(function(item) {
         realPath = path.resolve(path.dirname(_this.filepath), path.join(path.dirname(_this.filepath), item) + extension);
         result.push(fs.readFileSync(realPath).toString());
     });
 
-    outputRealPath = path.resolve(path.dirname(_this.filepath), path.join(path.dirname(_this.filepath), mergeOpt.output) + extension) || ' ';
+    outputRealPath = path.resolve(resultPath, path.join(resultPath, mergeOpt.output) + extension) || ' ';
+
     fs.writeFileSync(outputRealPath, result.join('\n'));
 
     outputPath = path.relative(path.dirname(_this.filepath), path.join(path.dirname(_this.filepath), mergeOpt.output) + extension);
