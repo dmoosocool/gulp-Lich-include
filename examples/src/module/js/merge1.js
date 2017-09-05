@@ -1,0 +1,1 @@
+console.log('hello, this is merge1.js');

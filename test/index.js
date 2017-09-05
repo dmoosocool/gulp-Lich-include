@@ -33,9 +33,7 @@ describe('Analysis test include js-local.', function () {
                 contents: fs.readFileSync(tmpPath)
             }),
             result = LichAnalysis.execute(file),
-            successResult = `<script src="js/test.js" type="text/javascript"></script>
-<script src="js/test1.js" type="text/javascript"></script>
-<script src="js/test2.js" type="text/javascript"></script>`;
+            successResult = `<script src="js/test.js" type="text/javascript"></script>\n\t<script src="js/test1.js" type="text/javascript"></script>\n\t<script src="js/test2.js" type="text/javascript"></script>`;
         result.should.eql(successResult);
     });
 });
@@ -60,8 +58,7 @@ describe('Analysis test include js-npm.', function () {
                 contents: fs.readFileSync(tmpPath)
             }),
             result = LichAnalysis.execute(file),
-            successResult = `<script src="../../dist/node_modules/jquery/dist/jquery.min.js" type="text/javascript"></script>
-<script src="../../dist/node_modules/lodash/lodash.min.js" type="text/javascript"></script>`;
+            successResult = `<script src="../../dist/node_modules/jquery/dist/jquery.min.js" type="text/javascript"></script>\n\t<script src="../../dist/node_modules/lodash/lodash.min.js" type="text/javascript"></script>`;
         result.should.eql(successResult);
     });
 });
@@ -86,8 +83,7 @@ describe('Analysis test include css-local.', function () {
                 contents: fs.readFileSync(tmpPath)
             }),
             result = LichAnalysis.execute(file),
-            successResult = `<link rel="stylesheet" href="css/test1.css"/>
-<link rel="stylesheet" href="css/dmoo.css"/>`;
+            successResult = `<link rel="stylesheet" href="css/test1.css"/>\n\t<link rel="stylesheet" href="css/dmoo.css"/>`;
         result.should.eql(successResult);
     });
 });
@@ -112,8 +108,7 @@ describe('Analysis test include tpl.', function () {
                 contents: fs.readFileSync(tmpPath)
             }),
             result = LichAnalysis.execute(file),
-            successResult = `<h1>hello, this is template's content.</h1>
-<h2>hello, this is test2 template content.</h2>`;
+            successResult = `<h1>hello, this is template's content.</h1>\n\t<h2>hello, this is test2 template content.</h2>`;
         result.should.eql(successResult);
     });
 });
@@ -127,9 +122,7 @@ describe('Analysis test include rule.', function () {
                 contents: fs.readFileSync(tmpPath)
             }),
             result = LichAnalysis.execute(file),
-            successResult = `<script src="js/test.rule.js" type="text/javascript"></script>
-<script src="js/test1.rule.js" type="text/javascript"></script>
-<script src="../../dist/node_modules/jquery/dist/jquery.min.js" type="text/javascript"></script>`;
+            successResult = `<script src="js/test.rule.js" type="text/javascript"></script>\n\t<script src="js/test1.rule.js" type="text/javascript"></script>\n\t<script src="../../dist/node_modules/jquery/dist/jquery.min.js" type="text/javascript"></script>`;
         result.should.eql(successResult);
     });
 
@@ -141,12 +134,7 @@ describe('Analysis test include rule.', function () {
                 contents: fs.readFileSync(tmpPath)
             }),
             result = LichAnalysis.execute(file),
-            successResult = `<script src="js/test.rule.js" type="text/javascript"></script>
-<script src="js/test1.rule.js" type="text/javascript"></script>
-<script src="../../dist/node_modules/jquery/dist/jquery.min.js" type="text/javascript"></script>
-<link rel="stylesheet" href="css/test1.css"/>
-<link rel="stylesheet" href="css/test2.css"/>
-<link rel="stylesheet" href="../../dist/node_modules/animate.css/animate.css"/>`;
+            successResult = `<script src="js/test.rule.js" type="text/javascript"></script>\n\t<script src="js/test1.rule.js" type="text/javascript"></script>\n\t<script src="../../dist/node_modules/jquery/dist/jquery.min.js" type="text/javascript"></script>\n\t<link rel="stylesheet" href="css/test1.css"/>\n\t<link rel="stylesheet" href="css/test2.css"/>\n\t<link rel="stylesheet" href="../../dist/node_modules/animate.css/animate.css"/>`;
         result.should.eql(successResult);
     });
 });

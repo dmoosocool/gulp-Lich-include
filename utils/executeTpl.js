@@ -21,5 +21,5 @@ module.exports = function executeTpl(tpl, ctx) {
         result.push(tplContent);
     });
 
-    return result.join('\n');
+    return result.join('\n\t');
 }

@@ -5,6 +5,7 @@ let path = require('path'),
     executeJs = require('./executeJs'),
     executeCss = require('./executeCss'),
     executeRule = require('./executeRule'),
+    executeMerge = require('./executeMerge'),
     fs = require('fs');
 
 let analysis = function analysis(config, inject) {
@@ -34,7 +35,7 @@ analysis.prototype.execute = function (file) {
     });
 
     // 解析指令.
-    let commandReg = new RegExp('<!--\\s*' + command + '\\s+(\\w+(?:\\-\\w+)?)=(?:\\"([^\\"]+)\\"|\\\'([^\\\']+)\\\')\\s*-->', 'g');
+    let commandReg = new RegExp('<!--\\s*' + command + '\\s+(\\w+(?:\\-\\w+)?(?:\\-\\w+)?)=(?:\\"([^\\"]+)\\"|\\\'([^\\\']+)\\\')\\s*-->', 'g');
     content = content.replace(commandReg, function (word, type, params) {
         let result = '';
         switch (type) {
@@ -55,6 +56,12 @@ analysis.prototype.execute = function (file) {
                 break;
             case 'rule':
                 result = executeRule(params, _this);
+                break;
+            case 'js-local-merge':
+                result = executeMerge(params, 'js-local', _this);
+                break;
+            case 'css-local-merge':
+                result = executeMerge(params, 'css-local', _this);
                 break;
             default:
                 break;

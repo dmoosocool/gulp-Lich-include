@@ -20,8 +20,7 @@ module.exports = function executeCss(file, type, ctx) {
         item = item.trim();
         if ('local' === type) {
             // 获取相对路径.
-            realPath = path.relative(_this.config.distDir, path.join(_this.config.distDir, item)) + _this.config.cssExtension;
-
+            realPath = path.relative(path.dirname(_this.filepath), path.join(path.dirname(_this.filepath), item) + _this.config.cssExtension);
         }
 
         if ('npm' === type) {
@@ -46,5 +45,5 @@ module.exports = function executeCss(file, type, ctx) {
         result.push(`<link rel="stylesheet" href="${realPath}"/>`);
     });
 
-    return result.join('\n');
+    return result.join('\n\t');
 }

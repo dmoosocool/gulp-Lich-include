@@ -34,5 +34,5 @@ module.exports = function executeRule(rule, ctx) {
             }
         });
     });
-    return result.join('\n');
+    return result.join('\n\t');
 }

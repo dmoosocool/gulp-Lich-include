@@ -92,10 +92,15 @@ module.exports = {
 
 ## Local javascript include.
 ```HTML
-<!--Lich js-local="path/to/script" -->
-<!--Lich js-local="path/to/script,path/to/other" -->
+<!--Lich js-local="path/to/script"-->
+<!--Lich js-local="path/to/script,path/to/other"-->
 ```
 
+## Local javascript merge.
+```HTML
+<!-- Lich js-local-merge="path/to/merge.min:path/to/test1,path/to/test2"-->
+
+```
 ## Npm javascript include.
 ```HTML
 <!-- Lich js-npm="path/tp/script"-->
@@ -104,14 +109,19 @@ module.exports = {
 
 ## Local style include.
 ```HTML
-<!--Lich css-local="path/to/style" -->
-<!--Lich css-local="path/to/style,path/to/other" -->
+<!--Lich css-local="path/to/style"-->
+<!--Lich css-local="path/to/style,path/to/other"-->
+```
+
+## Local style merge.
+```HTML
+<!--Lich css-local-merge="path/to/merge:path/to/test,path/to/test1"-->
 ```
 
 ## Npm style include.
 ```HTML
-<!-- Lich css-npm="path/to/style" -->
-<!-- Lich css-npm="path/to/style,path/to/other" -->
+<!-- Lich css-npm="path/to/style"-->
+<!-- Lich css-npm="path/to/style,path/to/other"-->
 ```
 
 ## Template include.

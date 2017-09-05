@@ -20,7 +20,7 @@ module.exports = function executeJs(file, type, ctx) {
         item = item.trim();
         if ('local' === type) {
             // 获取相对路径.
-            realPath = path.relative(_this.config.distDir, path.join(_this.config.distDir, item)) + _this.config.jsExtension;
+            realPath = path.relative(path.dirname(_this.filepath), path.join(path.dirname(_this.filepath), item) + _this.config.jsExtension);
         }
 
         if ('npm' === type) {
@@ -45,5 +45,5 @@ module.exports = function executeJs(file, type, ctx) {
         result.push(`<script src="${realPath}" type="text/javascript"></script>`);
     });
 
-    return result.join('\n');
+    return result.join('\n\t');
 }
